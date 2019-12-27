@@ -18,24 +18,24 @@ app.set("view engine", "handlebars");
 
 
 
-// test queries
-orm = require("./config/orm.js");
-
-var result = orm.insertOne("burgers", ["burger_name"], ["Favorite"]);
-console.log("\n insert Favorite; result:  ");
-console.log(result);
-
-result = orm.selectAll("burgers");
-console.log("\n select *; result:  ");
-console.log(result);
-
-result = orm.updateOne("burgers", 1, "devoured", true);
-console.log("\n update burger 1 to devoured true; result:  ");
-console.log(result);
-
-result = orm.selectAll("burgers");
-console.log("\n select *; result:  ");
-console.log(result);
+// test queries  ******* Moved to burger.js
+// orm = require("./config/orm.js");
+//
+// var result = orm.insertOne("burgers", ["burger_name"], ["Favorite"]);
+// console.log("\n insert Favorite; result:  ");
+// console.log(result);
+//
+// result = orm.selectAll("burgers");
+// console.log("\n select *; result:  ");
+// console.log(result);
+//
+// result = orm.updateOne("burgers", 1, "devoured", true);
+// console.log("\n update burger 1 to devoured true; result:  ");
+// console.log(result);
+//
+// result = orm.selectAll("burgers");
+// console.log("\n select *; result:  ");
+// console.log(result);
 
 
 

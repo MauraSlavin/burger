@@ -6,38 +6,41 @@ const connection = require("./connection.js");
 const orm = {
 
 // retrieve the whole table
-  selectAll: function(table) {
+  selectAll: async function(table) {
     const queryString = "SELECT * FROM ??;";
-    connection.query(queryString, [table], function(err, result) {
+    await connection.query(queryString, [table], function(err, result) {
       if (err) throw err;
       console.log("Select *: ");
       console.log(result);
+      return result;
     });
   },
 
 // insert a new row to the table
-  insertOne: function(table, columns, data) {
+  insertOne: async function(table, columns, data) {
     const queryString = "INSERT INTO ?? (??) VALUES (?);";
-    connection.query(queryString, [table, columns, data], function(
+    await connection.query(queryString, [table, columns, data], function(
       err,
       result
     ) {
       if (err) throw err;
-      console.log("Inserted id: ");
-      console.log(result.insertId);
+    //   console.log("Inserted id: ");
+    //   console.log(result.insertId);
+    //   return result.insertId;
     });
   },
 
 // Update one value of one row given the id
-  updateOne: function(table, id, column, newvalue) {
+  updateOne: async function(table, id, column, newvalue) {
     const queryString = "UPDATE ?? SET ?? = ? WHERE id = ?;";
-    connection.query(queryString, [table, column, newvalue, id], function(
+    await connection.query(queryString, [table, column, newvalue, id], function(
       err,
       result
     ) {
       if (err) throw err;
-      console.log("# rows updated: ");
-      console.log(result.affectedRows);
+    //   console.log("# rows updated: ");
+    //   console.log(result.affectedRows);
+    //   return result.affectedRows;
     });
   }
 };
