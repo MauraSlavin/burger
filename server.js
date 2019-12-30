@@ -1,6 +1,8 @@
 // Dependencies
-var express = require("express");
-var exphbs = require("express-handlebars");
+const express = require("express");
+const exphbs = require("express-handlebars");
+// var routes = require('./routes');
+const cntrlr  = require("./controllers/burgers_controller.js");
 
 // Create an instance of the express app.
 var app = express();
@@ -16,33 +18,30 @@ var PORT = process.env.PORT || 8080;
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+var path = require("path"); //  Testing
+app.use(express.static(path.join(__dirname, "public")));
 
+// Parse application body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// test queries  ******* Moved to burger.js
-// orm = require("./config/orm.js");
-//
-// var result = orm.insertOne("burgers", ["burger_name"], ["Favorite"]);
-// console.log("\n insert Favorite; result:  ");
-// console.log(result);
-//
-// result = orm.selectAll("burgers");
-// console.log("\n select *; result:  ");
-// console.log(result);
-//
-// result = orm.updateOne("burgers", 1, "devoured", true);
-// console.log("\n update burger 1 to devoured true; result:  ");
-// console.log(result);
-//
-// result = orm.selectAll("burgers");
-// console.log("\n select *; result:  ");
-// console.log(result);
+// Get the routes
+const routes = require('./controllers/burgers_controller.js')
 
+app.use(routes);
 
-
+// global variables
+//   objects have:
+//       id:  integer - unique identifier
+//       burger_name: string
+//       devoured:  boolean (true if eaten)
+burgers = []; // array of objects including all burgers in the db
+uneaten = []; // array of objects including only uneaten burgers
+devoured = []; // array of objects including only eaten (devoured) burgers
 
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
-  // Log (server-side) when our server has started
+  // Tell user when server is ready
   console.log("Server listening on: http://localhost:" + PORT);
 });

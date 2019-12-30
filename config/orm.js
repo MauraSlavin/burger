@@ -1,46 +1,41 @@
-// var connection = require("./connection.js");
-const connection = require("./connection.js");
+// Get my SQL connection.
+const connection = require("../config/connection.js");
 
 // methods to query SQL db
-// var orm = {
 const orm = {
 
 // retrieve the whole table
-  selectAll: async function(table) {
+  selectAll: function(table, cb) {
     const queryString = "SELECT * FROM ??;";
-    await connection.query(queryString, [table], function(err, result) {
-      if (err) throw err;
-      console.log("Select *: ");
-      console.log(result);
-      return result;
+    connection.query(queryString, [table], function(error, result) {
+      if (error) {throw error};
+      // console.log("Select *: ");
+      // console.log(result);
+       cb(result);
     });
   },
 
 // insert a new row to the table
-  insertOne: async function(table, columns, data) {
-    const queryString = "INSERT INTO ?? (??) VALUES (?);";
-    await connection.query(queryString, [table, columns, data], function(
-      err,
-      result
-    ) {
-      if (err) throw err;
+  insertOne: function(table, columns, data, cb) {
+    queryString = "INSERT INTO ?? (??) VALUES (?);";
+    connection.query(queryString, [table, columns, data], function(error, result) {
+      if (error) {throw error};
     //   console.log("Inserted id: ");
     //   console.log(result.insertId);
     //   return result.insertId;
+    cb(result);
     });
   },
 
 // Update one value of one row given the id
-  updateOne: async function(table, id, column, newvalue) {
+  updateOne: function(table, id, column, newvalue, cb) {
     const queryString = "UPDATE ?? SET ?? = ? WHERE id = ?;";
-    await connection.query(queryString, [table, column, newvalue, id], function(
-      err,
-      result
-    ) {
-      if (err) throw err;
+    connection.query(queryString, [table, column, newvalue, id], function(error, result) {
+      if (error) {throw error};
     //   console.log("# rows updated: ");
     //   console.log(result.affectedRows);
     //   return result.affectedRows;
+      cb(result);
     });
   }
 };
