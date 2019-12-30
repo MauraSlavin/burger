@@ -1,56 +1,36 @@
-const posts = [
-  {
-    title: "post 1",
-    body: "This is post 1"
-  },
-  {
-    title: "post 2",
-    body: "This is post 2"
-  }
+// var item = 2;
+// var items = [{id:1}, {id:2}, {id:3}];
+
+// var foundIndex = items.findIndex(x => x.id == item.id);
+// items[foundIndex] = item;
+
+burgers = [
+    {
+        id: 4,
+        name: "Mushroom",
+        devoured: false
+    },
+    {
+        id: 3,
+        name: "Bacon",
+        devoured: false
+    },
+    {
+        id: 5,
+        name: "Cheese",
+        devoured: false
+    },
+    {
+        id: 2,
+        name: "Plain",
+        devoured: false
+    }
 ];
 
-function getPosts(indices) {
-  setTimeout(() => {
-    console.log(indices);
-    let output = "";
-    // console.log("\n");
-    // console.log("posts:  ");
-    // console.log(posts);
-    posts.forEach((post, index) => {
-      //   console.log("/nindex:  ",index);
-      //   console.log("post:  ");
-      //   console.log(post);
-      if (indices.includes(index + 1)) {
-        //     console.log("if true, concatenate");
-        output += post.title;
-        //     console.log("Output:  ", output);
-      } else {
-        //     console.log("if false...");
-        output += "skip";
-        //     console.log("output:  ", output);
-      }
-    });
-    console.log(output);
-  }, 1000);
-}
+const id = 2;
+const found = burgers.findIndex(item => item.id == 2);
+console.log("Id: ", id);
+console.log("Found item:");
+console.log(burgers[found]);
 
-function createPost(post) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      posts.push(post);
 
-      const error = false;
-      // const error = true;
-
-      if (!error) {
-        resolve();
-      } else {
-        reject("Error");
-      }
-    }, 2000);
-  });
-}
-
-createPost({ title: "Post 3", body: "This is post 3" })
-  .then(() => getPosts([1, 3]))   // must be an anonymous fcn
-  .catch(err => console.log(err));

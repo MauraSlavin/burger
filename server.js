@@ -2,7 +2,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 // var routes = require('./routes');
-const cntrlr  = require("./controllers/burgers_controller.js");
+const routes = require("./controllers/burgers_controller.js");
 
 // Create an instance of the express app.
 var app = express();
@@ -24,10 +24,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Get the routes
-const routes = require('./controllers/burgers_controller.js')
-
 app.use(routes);
 
 // global variables
@@ -36,8 +32,8 @@ app.use(routes);
 //       burger_name: string
 //       devoured:  boolean (true if eaten)
 burgers = []; // array of objects including all burgers in the db
-uneaten = []; // array of objects including only uneaten burgers
-devoured = []; // array of objects including only eaten (devoured) burgers
+// uneaten = []; // array of objects including only uneaten burgers
+// devoured = []; // array of objects including only eaten (devoured) burgers
 
 
 // Start our server so that it can begin listening to client requests.
