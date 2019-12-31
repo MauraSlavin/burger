@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	{{!-- get bootstrap --}}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	{{!-- Need var path = require("path");  and 
@@ -20,6 +21,7 @@
 <div class="row text-center">
 	{{!-- Need var path = require("path");  and 
 	app.use(express.static(path.join(__dirname, 'public')));  in .js back-end file --}}
+	{{!-- Put burger image on top of webpage --}}
 	<img class="center-block" id="burger-pic" src="assets/img/burger.png" alt="burger image">
 </div>
 
@@ -29,38 +31,12 @@
 
 <body>
 
+	{{!-- lists of uneaten and devoured burgers are in the handlebars body --}}
 	{{{body}}}
 
-	{{!-- <div class="row justify-content-center">
-		<div class="col-3">
-			<textarea class="form-control rounded-0 text-dark border border-dark" id="new-burger" rows="1" name="new-burger"></textarea>
-		</div>
-	</div>
-
-	<div class="row justify-content-center">
-		<div class="col-3 text-center">
-			<button type="button" class="btn btn-primary">Submit</button>
-		</div>
-	</div> --}}
-
-	{{!-- <form class="create-form">
-		<div class="form-group row justify-content-center">
-			<div class="col-6 text-center">
-				<input type="text" id="burg" name="new_burger">
-			</div>
-		</div>
-
-		<div class="form-group row justify-content-center">
-			<div class="col-3 text-center">
-				<button type="button" class="btn btn-primary add-burger">Submit</button>
-			</div>
-		</div>
-
-	</form> --}}
-
+	{{!-- Form to enter new burger name; & submit button --}}
 	<form class="new-burger-form">
 		<div class="form-group row justify-content-center">
-			{{!-- <label for="newBurgerInput">(new burger name)</label> --}}
 			<div class="col-4 text-center">
 				<input type="text" class="form-control" id="burg" placeholder="(new burger name)" name="called">
 			</div>
@@ -70,14 +46,14 @@
 		</div>
 	</form>
 
+	{{!-- Text to prompt for a new burger name --}}
 	<div class="row justify-content-center">
 		<p>Enter a burger you have a craving for and press "Submit."</p>
 	</div>
 
 </body>
-{{!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-	crossorigin="anonymous"></script> --}}
+
+{{!-- Get bootstrap --}}
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 	crossorigin="anonymous"></script>

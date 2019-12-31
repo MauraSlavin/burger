@@ -1,4 +1,4 @@
-// Dependencies
+// Get express & handlebars
 const express = require("express");
 const exphbs = require("express-handlebars");
 // var routes = require('./routes');
@@ -18,7 +18,7 @@ var PORT = process.env.PORT || 8080;
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var path = require("path"); //  Testing
+var path = require("path"); 
 app.use(express.static(path.join(__dirname, "public")));
 
 // Parse application body as JSON
@@ -26,15 +26,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
 
-// global variables
-//   objects have:
+// global variable burgers is an array of objects
+//   each object has:
 //       id:  integer - unique identifier
-//       burger_name: string
+//       burger_name: string (can have duplicates)
 //       devoured:  boolean (true if eaten)
 burgers = []; // array of objects including all burgers in the db
-// uneaten = []; // array of objects including only uneaten burgers
-// devoured = []; // array of objects including only eaten (devoured) burgers
-
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {

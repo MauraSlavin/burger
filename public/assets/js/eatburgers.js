@@ -2,45 +2,40 @@ $(function() {
   // if the devoured button (uneaten-li-btn) was clicked,
   // change it to eaten in the database and on the website.
   $(".uneaten-li-btn").on("click", function(event) {
-    console.log("uneaten-li-btn clicked");
     const id = $(this).data("id");
-    
+
+    // make it devoured (eaten)
     const devouredTrue = {
       devoured: true
     };
 
-    // Send the PUT request.
+    // Send the PUT request by id
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
       data: devouredTrue
-    }).then(
-      function() {
-        console.log(`Burger #${id} has been DEVOURED!  It was delicious. :)`);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
   });
 
-
-    $(".new-burger-form").on("submit", function(event) {
+  // when submit button hit, add a new burger to the db & webpage
+  $(".new-burger-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
+    // get new burger name from the website
     const newBurger = {
-      new_burger: $("#burg").val().trim(),
+      new_burger: $("#burg").val().trim()
     };
 
     // Send the POST request.
     $.ajax("/api/burgers", {
       type: "POST",
       data: newBurger
-    }).then(
-      function() {
-        console.log(`New ${newBurger.new_burger} created. Can't wait to taste it!`);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
   });
 });
