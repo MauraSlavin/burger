@@ -15,7 +15,9 @@ const dbqueries = {
 
   // add a new burger to the database
   addBurger: function(burger_name, cb) {
-    orm.insertOne("burgers", ["burger_name"], burger_name, function(results) {
+    orm.insertOne("burgers", ["burger_name"], [burger_name], function(results) {
+      console.log("In insertOne...results:");
+      console.log(results);
       cb(results);
     });
   },  // end of addBurger

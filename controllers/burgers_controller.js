@@ -19,8 +19,6 @@ router.get("/index", function(request, result) {
   //     burger_name:  string
   //     devoured:  boolean - true if eaten (devoured)
   dbqueries.getBurgers(function(data) {
-    console.log("\n*** In router.get,  data (burgers):");
-    console.log(data);
     burgers = data;
 
     // get uneaten and devoured arrays from burgers
@@ -38,8 +36,18 @@ router.get("/index", function(request, result) {
   });
 });
 
+// add new burger
+router.post("/api/burgers", function(request, resultAPI) {
+  dbqueries.addBurger(request.body.new_burger, function(result) {
+    // result.insertId is part of the result returned.
+    resultAPI.json({ id: result.insertId });
+    // resultAPI.render("index", {
+    //   burgers: burgers
+    // });
+  });
+});
 
-
+// change devoured to true for burger being enjoyed.
 router.put("/api/burgers/:id", function(request, resultAPI) {
   var burger_id = request.params.id;
 
@@ -54,8 +62,6 @@ router.put("/api/burgers/:id", function(request, resultAPI) {
     }
   });
 });
-
-
 
 // Export so other modules can use
 module.exports = router;
