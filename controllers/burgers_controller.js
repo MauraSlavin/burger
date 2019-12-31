@@ -5,7 +5,7 @@ const dbqueries = require("../models/burger.js");
 const express = require("express");
 const router = express.Router();
 
-router.get("/index", function(request, result) {
+router.get("/", function(request, result) {
   // burgers is a GLOBAL array of objects.
   //   each object has:
   //     id:  integer - unique identifier
