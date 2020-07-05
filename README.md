@@ -1,6 +1,9 @@
 # burger
-Link to Github page:   [Burgers](https://github.com/MauraSlavin/burger)
-Link to Heroku:  [Burgers](https://git.heroku.com/floating-hamlet-11534.git)
+Link to Github page:   [Github Burgers](https://github.com/MauraSlavin/burger)
+
+Link to Heroku:  [Heroku Burgers](https://git.heroku.com/floating-hamlet-11534.git)
+
+Deployed to Heroku: [Deployed Burgers](https://floating-hamlet-11534.herokuapp.com/)
 
 ## Description
 Node js application to allow users to enter a burger name.
