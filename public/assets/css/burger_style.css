@@ -10,6 +10,12 @@ h1 {
     text-align: center;
 }
 
+h3 {
+    padding-left: 40px !important;
+    padding-bottom: 15px !important;
+    color: darkblue;
+}
+
 /* keep the submit button to add a burger close to the input area */
 .add-burger {
     margin: -10px 10px 10px;
